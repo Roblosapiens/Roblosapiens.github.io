@@ -44,6 +44,18 @@ export const projectPages: Record<string, ProjectPage> = {
       "Tools and links for Square Based Gaming’s Renegade Legacy Pack drafts. Unofficial fan work — not affiliated with or endorsed by Games Workshop.",
     sections: [
       {
+        heading: "Rules",
+        links: [
+          {
+            href: "https://tow.whfb.app/",
+            title: "Warhammer Fantasy Online Rules Index Project",
+            description:
+              "Online rules index for Warhammer: The Old World.",
+            external: true,
+          },
+        ],
+      },
+      {
         heading: "Arcane Instruments",
         links: [
           {
@@ -92,13 +104,6 @@ export const projectPages: Record<string, ProjectPage> = {
             href: "https://old-world-builder.com/",
             title: "Old World Builder (official)",
             description: "Upstream army builder this fork is based on.",
-            external: true,
-          },
-          {
-            href: "https://tow.whfb.app/",
-            title: "Warhammer Fantasy Online Rules Index Project",
-            description:
-              "Online rules index for Warhammer: The Old World.",
             external: true,
           },
         ],
