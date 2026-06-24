@@ -1,0 +1,56 @@
+---
+import ScrollLayout from "../../../layouts/ScrollLayout.astro";
+import LinkCard from "../../../components/LinkCard.astro";
+import CampaignSchedule from "../../../components/CampaignSchedule.astro";
+import { campaign, scheduleDocEmbedUrl } from "../../data/campaign";
+---
+
+<ScrollLayout
+  title="Path to Glory Campaign"
+  description="Path to Glory campaign schedule and links for our Warhammer: The Old World group."
+  ornament="⚑"
+  tagline="Running sheet, battles, and campaign tools for our local Path to Glory league."
+  introBox
+  showBackLink
+  backHref="/old-world/"
+  backLabel="← Back to The Old World"
+>
+  <section>
+    <h2>Campaign Tracker</h2>
+    <ul>
+      <li>
+        <LinkCard
+          href={campaign.tracker.href}
+          title={campaign.tracker.title}
+          description={campaign.tracker.description}
+          external
+        />
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Running Sheet</h2>
+    {
+      scheduleDocEmbedUrl ? (
+        <div class="schedule-embed">
+          <iframe
+            src={scheduleDocEmbedUrl}
+            title="Path to Glory campaign schedule"
+            loading="lazy"
+          />
+        </div>
+      ) : (
+        <>
+          <p class="schedule-note">
+            Current game-day schedule from Mike’s runsheet. When a shared Google
+            Doc is available, it can be embedded here instead.
+          </p>
+          {campaign.gameDays.map((gameDay) => (
+            <CampaignSchedule gameDay={gameDay} />
+          ))}
+        </>
+      )
+    }
+  </section>
+</ScrollLayout>

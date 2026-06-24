@@ -9,6 +9,8 @@ interface Props {
   tagline?: string;
   introBox?: boolean;
   showBackLink?: boolean;
+  backHref?: string;
+  backLabel?: string;
 }
 
 const {
@@ -18,13 +20,15 @@ const {
   tagline,
   introBox = false,
   showBackLink = false,
+  backHref = "/",
+  backLabel = "← Return to the grimoire",
 } = Astro.props;
 ---
 
 <BaseLayout title={title} description={description}>
   <article class="scroll">
     {showBackLink && (
-      <a class="back-link" href="/">← Return to the grimoire</a>
+      <a class="back-link" href={backHref}>{backLabel}</a>
     )}
 
     <header class="scroll-header">

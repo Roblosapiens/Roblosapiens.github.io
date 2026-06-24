@@ -378,6 +378,82 @@ a.card span {
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
+.schedule-note {
+  margin: 0 0 1.25rem;
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--ink-faded);
+}
+
+.runsheet {
+  margin-bottom: 1.75rem;
+}
+
+.runsheet-title {
+  margin: 0 0 0.75rem;
+  font-family: "Cinzel", serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.runsheet-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.92rem;
+  background: rgba(255, 248, 230, 0.45);
+  border: 1px solid rgba(139, 90, 43, 0.45);
+}
+
+.runsheet-table th,
+.runsheet-table td {
+  padding: 0.65rem 0.75rem;
+  border: 1px solid rgba(139, 90, 43, 0.35);
+  text-align: left;
+  vertical-align: top;
+}
+
+.runsheet-table th {
+  background: rgba(91, 120, 155, 0.22);
+  font-family: "Cinzel", serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.runsheet-table tbody tr:nth-child(even):not(.runsheet-break) {
+  background: rgba(101, 67, 33, 0.06);
+}
+
+.runsheet-break td {
+  background: rgba(91, 120, 155, 0.18);
+  font-weight: 600;
+  text-align: center;
+  font-family: "Cinzel", serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.schedule-embed {
+  position: relative;
+  width: 100%;
+  min-height: 28rem;
+  border: 1px solid rgba(139, 90, 43, 0.45);
+  background: rgba(255, 248, 230, 0.45);
+}
+
+.schedule-embed iframe {
+  width: 100%;
+  height: 36rem;
+  border: 0;
+}
+
 @media (max-width: 540px) {
   .scroll {
     margin: 1rem 0.75rem 2.5rem;
@@ -387,6 +463,15 @@ a.card span {
   h2::before,
   h2::after {
     display: none;
+  }
+
+  .runsheet-table {
+    font-size: 0.82rem;
+  }
+
+  .runsheet-table th,
+  .runsheet-table td {
+    padding: 0.5rem;
   }
 }
 

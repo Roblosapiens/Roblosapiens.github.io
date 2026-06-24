@@ -53,6 +53,24 @@ export const projectPages: Record<string, ProjectPage> = {
               "Army builder with Renegade factions: Lizardmen, Skaven, Dark Elves, Ogres, Chaos Dwarfs, and Daemons.",
             external: true,
           },
+          {
+            href: "https://oldworldcalculator.com/",
+            title: "Old World Calculator",
+            description:
+              "Combat calculator for Warhammer: The Old World — resolve fights without the math scroll.",
+            external: true,
+          },
+        ],
+      },
+      {
+        heading: "The Campaign",
+        links: [
+          {
+            href: "/old-world/campaign/",
+            title: "Path to Glory Campaign",
+            description:
+              "Game-day running sheet, battle pairings, and Damien’s campaign tracker.",
+          },
         ],
       },
       {

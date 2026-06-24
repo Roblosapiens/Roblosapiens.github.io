@@ -1,0 +1,44 @@
+---
+import type { GameDay } from "../data/campaign";
+
+interface Props {
+  gameDay: GameDay;
+}
+
+const { gameDay } = Astro.props;
+---
+
+<div class="runsheet">
+  <h3 class="runsheet-title">
+    {gameDay.title}
+    {gameDay.date ? ` — ${gameDay.date}` : " (date TBC)"}
+  </h3>
+
+  <table class="runsheet-table">
+    <thead>
+      <tr>
+        <th scope="col">Time</th>
+        <th scope="col">Game phase</th>
+        <th scope="col">Battle</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        gameDay.rows.map((row) =>
+          row.type === "break" ? (
+            <tr class="runsheet-break">
+              <td>{row.time}</td>
+              <td colspan="2">{row.label}</td>
+            </tr>
+          ) : (
+            <tr>
+              <td>{row.time}</td>
+              <td>{row.phase}</td>
+              <td>{row.battle}</td>
+            </tr>
+          ),
+        )
+      }
+    </tbody>
+  </table>
+</div>
