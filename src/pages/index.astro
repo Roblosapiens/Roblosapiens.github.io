@@ -1,0 +1,28 @@
+---
+import ScrollLayout from "../layouts/ScrollLayout.astro";
+import LinkCard from "../components/LinkCard.astro";
+import { projects } from "../data/projects";
+---
+
+<ScrollLayout
+  title="Roblosapiens"
+  description="Roblosapiens — a grimoire of conjured projects and arcane tools."
+  tagline="A grimoire of conjured works — scripts, sigils, and summoned tools."
+>
+  <section>
+    <h2>Grimoire</h2>
+    <ul>
+      {
+        projects.map((project) => (
+          <li>
+            <LinkCard
+              href={`/${project.slug}/`}
+              title={project.title}
+              description={project.description}
+            />
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</ScrollLayout>

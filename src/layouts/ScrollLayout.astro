@@ -1,0 +1,42 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import ScrollFooter from "../components/ScrollFooter.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  ornament?: string;
+  tagline?: string;
+  introBox?: boolean;
+  showBackLink?: boolean;
+}
+
+const {
+  title,
+  description,
+  ornament = "✦",
+  tagline,
+  introBox = false,
+  showBackLink = false,
+} = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="scroll">
+    {showBackLink && (
+      <a class="back-link" href="/">← Return to the grimoire</a>
+    )}
+
+    <header class="scroll-header">
+      <div class="ornament" aria-hidden="true">{ornament}</div>
+      <h1>{title}</h1>
+      {tagline && (
+        <p class:list={["tagline", introBox && "project-intro"]}>{tagline}</p>
+      )}
+    </header>
+
+    <slot />
+
+    <ScrollFooter />
+  </article>
+</BaseLayout>
