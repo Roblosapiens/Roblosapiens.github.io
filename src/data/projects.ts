@@ -41,7 +41,7 @@ export const projectPages: Record<string, ProjectPage> = {
       "Warhammer: The Old World tools — Renegade draft army builder and related links.",
     ornament: "⚔",
     intro:
-      "Tools and links for Square Based Gaming’s Renegade Legacy Pack drafts. Unofficial fan work — not affiliated with or endorsed by Games Workshop.",
+      "Tools and links for our WH:TOW gaming group.",
     sections: [
       {
         heading: "Rules",
