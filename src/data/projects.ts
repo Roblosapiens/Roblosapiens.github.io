@@ -60,9 +60,16 @@ export const projectPages: Record<string, ProjectPage> = {
         links: [
           {
             href: "https://roblosapiens.github.io/owb-renegade-drafts/",
-            title: "Old World Builder — Renegade Drafts",
+            title: "Rob's Old World Builder with Renegade 2.0 Drafts",
             description:
-              "Army builder with Renegade factions: Lizardmen, Skaven, Dark Elves, Ogres, Chaos Dwarfs, and Daemons.",
+              "My fork — army builder with Renegade factions: Lizardmen, Skaven, Dark Elves, Ogres, Chaos Dwarfs, and Daemons.",
+            external: true,
+          },
+          {
+            href: "https://old-world-builder.com/",
+            title: "Original Old World Builder",
+            description:
+              "The upstream army builder this Renegade fork is based on.",
             external: true,
           },
           {
@@ -98,12 +105,6 @@ export const projectPages: Record<string, ProjectPage> = {
             href: "https://docs.google.com/document/d/16kAE-p_CWbsH0XatDPuRao6TngSw-KSweUnJa81kOXE/edit?usp=sharing",
             title: "Renegade Legacy Pack — draft index",
             description: "Latest faction drafts from Square Based Gaming.",
-            external: true,
-          },
-          {
-            href: "https://old-world-builder.com/",
-            title: "Old World Builder (official)",
-            description: "Upstream army builder this fork is based on.",
             external: true,
           },
         ],
