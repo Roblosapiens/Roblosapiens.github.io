@@ -62,7 +62,7 @@ export const projectPages: Record<string, ProjectPage> = {
             href: "https://roblosapiens.github.io/owb-renegade-drafts/",
             title: "Rob's Old World Builder with Renegade 2.0 Drafts",
             description:
-              "My fork — army builder with Renegade factions: Lizardmen, Skaven, Dark Elves, Ogres, Chaos Dwarfs, and Daemons. [Updated 2026-07-21 to incorporate the FAQ changes]",
+              "My fork of Old World Builder with Square Based Renegade Legacy Pack drafts: Lizardmen V1.5.2.2, Skaven V1.5.2.2, Dark Elves V1.5.2.2, Ogre Kingdoms V1.5.2.2, Chaos Dwarfs V1.5.2.2, Daemons of Chaos (Hotfix), and Vampire Counts V1.5.3.1. Also includes upstream FAQ 1.5.3 / OWB 2.2.x core-army updates. Updated 3 Sep 2026.",
             external: true,
           },
           {
@@ -111,7 +111,7 @@ export const projectPages: Record<string, ProjectPage> = {
           {
             href: "https://docs.google.com/document/d/16kAE-p_CWbsH0XatDPuRao6TngSw-KSweUnJa81kOXE/edit?usp=sharing",
             title: "Renegade Legacy Pack — draft index",
-            description: "Latest faction drafts from Square Based Gaming.",
+            description: "Latest faction drafts from Square Based Gaming (includes Vampire Counts V1.5.3.1).",
             external: true,
           },
         ],
