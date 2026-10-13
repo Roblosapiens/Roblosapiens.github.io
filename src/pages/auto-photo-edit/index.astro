@@ -1,0 +1,134 @@
+---
+import ScrollLayout from "../../layouts/ScrollLayout.astro";
+
+const results = [
+  { value: "−22%", label: "exposure error vs syncing the key photos" },
+  { value: "−12%", label: "white balance error vs syncing the key photos" },
+  { value: "0.75", label: "mean crop overlap (IoU) with my own crops; 0.66 for my average crop" },
+  { value: "1.9%", label: "photos where it picks the wrong main dancer (down from 10.1%)" },
+  { value: "0.1%", label: "crops that cut into the couple (down from 36.5%)" },
+  { value: "0.94°", label: "straightening error vs 1.29° when never rotating" },
+];
+
+const stack = [
+  "Python", "LightGBM", "scikit-learn", "PyTorch", "OpenCLIP", "Ultralytics YOLO11-pose",
+  "GeoCalib", "OpenCV", "pandas", "SQLite", "Lua (Lightroom SDK)", "Git",
+];
+---
+
+<ScrollLayout
+  title="Auto Photo Edit"
+  description="A Lightroom Classic plugin that learned Rob's editing, cropping and straightening style from five years of swing-dance photography."
+  ornament="❖"
+  tagline="A Lightroom Classic plugin that learned my editing, cropping and straightening style from five years of my own swing-dance photography, and now handles the repetitive part of every event."
+  introBox
+  showBackLink
+>
+  <section class="prose">
+    <h2>The Enchantment</h2>
+    <p>
+      I photograph couples dancing at swing socials: 100–200 keepers per event, each corrected by hand
+      for white balance, exposure, highlights and shadows, dehaze, sharpening, noise reduction and
+      vignette, then cropped and straightened. Roughly eight hours of editing per social.
+    </p>
+    <p>Now the workflow is:</p>
+    <ol class="ritual">
+      <li>Edit two or three key photos from the event by hand and give them a green label.</li>
+      <li>Select the whole event and run <em>Auto Edit + Crop</em>.</li>
+      <li>
+        The plugin syncs my look to every photo, corrects exposure and white balance per photo, crops
+        each one around the dancing couple the way I frame them, and straightens it.
+      </li>
+      <li>I review and fine-tune. Everything is ordinary Lightroom settings, undone in one step.</li>
+    </ol>
+  </section>
+
+  <section class="prose">
+    <h2>How the Spell Was Learned</h2>
+    <ul class="runes">
+      <li>
+        <strong>Mined the catalog.</strong> Lightroom's catalog is a SQLite database; I parsed the
+        Lua-serialised develop settings of 11,779 edited raw photos into a training set: the original
+        photo plus exactly what I did to it.
+      </li>
+      <li>
+        <strong>Recovered the "before" images.</strong> A minimal DNG/TIFF reader seeks straight to the
+        embedded preview and the camera's as-shot white balance instead of decoding 20&nbsp;MB raws,
+        taking extraction from about 50 to 2,600 files a minute.
+      </li>
+      <li>
+        <strong>Tone model.</strong> Image statistics, EXIF and CLIP scene embeddings feed gradient-boosted
+        models trained on how each photo differs from the rest of its event.
+      </li>
+      <li>
+        <strong>Crop model.</strong> YOLO11 pose detection finds every person and their body points; a
+        subject classifier, trained on 67,213 people labelled by whether I kept them in frame, tells the
+        couple from blurry bystanders; a regression model predicts my framing relative to the couple,
+        and a constraint guarantees heads and feet stay in.
+      </li>
+      <li>
+        <strong>Straightening.</strong> A line-detection approach was tested and rejected (it rotated the
+        wrong way a quarter of the time). GeoCalib's gravity estimate, calibrated against my own past
+        rotations, made the cut.
+      </li>
+      <li>
+        <strong>The plugin.</strong> A Lua plugin gathers the selection and hands it to a local Python
+        process, then applies the predicted develop settings in a single undoable step. Key photos and
+        existing crops are never touched.
+      </li>
+    </ul>
+  </section>
+
+  <section class="prose">
+    <h2>Trials &amp; Proofs</h2>
+    <p>
+      Every number below comes from events the models never saw during training (grouped
+      cross-validation), measured against simple baselines. Ideas that didn't beat the baseline,
+      like a fully automatic "look" or line-based straightening, didn't ship.
+    </p>
+    <ul class="stats">
+      {results.map((r) => (
+        <li><b>{r.value}</b><span>{r.label}</span></li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="prose">
+    <h2>Arcane Architecture</h2>
+    <figure class="diagram">
+      <a href="/auto-photo-edit/architecture.png">
+        <img src="/auto-photo-edit/architecture.png" width="2080" height="1400" loading="lazy"
+          alt="Architecture: the Lightroom Lua plugin sends a request to a local Python inference process (load and describe, tone settings, crop settings, straighten), which uses models produced by an offline training pipeline that reads a copy of the Lightroom catalog." />
+      </a>
+      <figcaption>Lightroom plugin, local inference and the offline training pipeline. Select to enlarge.</figcaption>
+    </figure>
+  </section>
+
+  <section class="prose">
+    <h2>Wards of Privacy</h2>
+    <ul class="runes">
+      <li><strong>Runs locally.</strong> Training and editing run on my own PC; the plugin never uploads photos.</li>
+      <li><strong>No generative AI on the photos.</strong> It only sets Lightroom's own sliders, crop and angle: faces and bodies are never altered.</li>
+      <li><strong>A human casts the final spell.</strong> I review every photo before anything is shared.</li>
+    </ul>
+  </section>
+
+  <section class="prose">
+    <h2>Instruments</h2>
+    <ul class="stack">
+      {stack.map((s) => <li>{s}</li>)}
+    </ul>
+    <p class="aside">Developed with AI pair-programming (Claude Code).</p>
+  </section>
+
+  <section class="prose">
+    <h2>Field Poster</h2>
+    <figure class="diagram">
+      <a href="/auto-photo-edit/infographic.png">
+        <img src="/auto-photo-edit/infographic.png" width="1600" height="2440" loading="lazy"
+          alt="Infographic summarising how Auto Photo Edit learns from the catalog, how it is used in Lightroom, what happens to each photo, results, and privacy." />
+      </a>
+      <figcaption>The whole project on one page. Select to enlarge.</figcaption>
+    </figure>
+  </section>
+</ScrollLayout>

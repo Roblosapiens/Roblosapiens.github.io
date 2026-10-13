@@ -7,6 +7,12 @@ export type Project = {
 /** Add one entry here and create src/pages/<slug>/index.astro */
 export const projects: Project[] = [
   {
+    slug: "auto-photo-edit",
+    title: "Auto Photo Edit for Lightroom Classic",
+    description:
+      "A plugin that learned five years of my photo-editing decisions — tone, crop and straightening — and now casts them across every new dance event. Machine learning, bound in Lua.",
+  },
+  {
     slug: "old-world",
     title: "Warhammer: The Old World",
     description:

@@ -454,6 +454,129 @@ a.card span {
   border: 0;
 }
 
+/* Project write-up pages (prose, figures, stats) */
+.prose p {
+  margin: 0 0 1rem;
+}
+
+.prose ol.ritual {
+  margin: 0 0 1rem;
+  padding-left: 1.4rem;
+}
+
+.prose ol.ritual li + li,
+.prose ul.runes li + li {
+  margin-top: 0.6rem;
+}
+
+.prose ul.runes li {
+  position: relative;
+  padding-left: 1.4rem;
+}
+
+.prose ul.runes li::before {
+  content: "◆";
+  position: absolute;
+  left: 0;
+  top: 0.2rem;
+  font-size: 0.6rem;
+  color: var(--gold);
+}
+
+.prose strong {
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.prose em {
+  color: var(--burgundy);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  gap: 0.75rem;
+}
+
+.stats li + li {
+  margin-top: 0;
+}
+
+.stats li {
+  padding: 0.9rem 1rem;
+  border: 1px solid rgba(139, 90, 43, 0.4);
+  background: rgba(242, 230, 204, 0.6);
+  text-align: center;
+}
+
+.stats b {
+  display: block;
+  font-family: "Cinzel", serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--burgundy);
+  line-height: 1.2;
+}
+
+.stats span {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: var(--ink-faded);
+}
+
+.diagram {
+  margin: 0;
+}
+
+.diagram a {
+  display: block;
+  border: 1px solid var(--scroll-edge);
+  box-shadow: 0 6px 24px rgba(20, 10, 5, 0.35);
+}
+
+.diagram img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.diagram figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--ink-faded);
+  text-align: center;
+}
+
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.stack li + li {
+  margin-top: 0;
+}
+
+.stack li {
+  padding: 0.2rem 0.65rem;
+  border: 1px solid rgba(139, 90, 43, 0.45);
+  font-family: "Cinzel", serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-light);
+  background: rgba(255, 248, 230, 0.35);
+}
+
+.aside {
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--ink-faded);
+}
+
 @media (max-width: 540px) {
   .scroll {
     margin: 1rem 0.75rem 2.5rem;
