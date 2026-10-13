@@ -1,5 +1,6 @@
 ---
 import ScrollLayout from "../../layouts/ScrollLayout.astro";
+import LinkCard from "../../components/LinkCard.astro";
 
 const results = [
   { value: "−22%", label: "exposure error vs syncing the key photos" },
@@ -130,5 +131,19 @@ const stack = [
       </a>
       <figcaption>The whole project on one page. Select to enlarge.</figcaption>
     </figure>
+  </section>
+
+  <section>
+    <h2>Known Tomes &amp; Portals</h2>
+    <ul>
+      <li>
+        <LinkCard
+          href="https://github.com/Roblosapiens/auto-photo-edit"
+          title="auto-photo-edit on GitHub"
+          description="Source code for the plugin, training pipeline and evaluation, plus a guide to building your own from your catalog."
+          external
+        />
+      </li>
+    </ul>
   </section>
 </ScrollLayout>
